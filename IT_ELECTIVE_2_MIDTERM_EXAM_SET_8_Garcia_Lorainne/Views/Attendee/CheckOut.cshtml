@@ -1,0 +1,104 @@
+﻿@model IT_ELECTIVE_2_MIDTERM_EXAM_SET_8_Garcia_Lorainne.Models.AttendeeVisit
+
+@{
+    ViewData["Title"] = "Check-Out Attendee";
+}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow">
+
+                <div class="card-header">
+                    <h3 class="mb-0">Check-Out Attendee</h3>
+                </div>
+
+                <div class="card-body">
+
+                    <p>
+                        Are you sure you want to check out this attendee?
+                    </p>
+
+                    <hr />
+
+                    <dl class="row">
+
+                        <dt class="col-sm-5">
+                            Ticket Number
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Model.TicketNumber
+                        </dd>
+
+                        <dt class="col-sm-5">
+                            Attendee
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Model.FirstName @Model.LastName
+                        </dd>
+
+                        <dt class="col-sm-5">
+                            Organization
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Model.Organization
+                        </dd>
+
+                        <dt class="col-sm-5">
+                            Event Name
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Model.EventName
+                        </dd>
+
+                        <dt class="col-sm-5">
+                            Check-In Time
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Model.CheckInTime.ToString("MMM dd, yyyy hh:mm tt")
+                        </dd>
+
+                        <dt class="col-sm-5">
+                            Current Status
+                        </dt>
+                        <dd class="col-sm-7">
+                            <span class="badge bg-success">
+                                @Model.Status
+                            </span>
+                        </dd>
+
+                    </dl>
+
+                    <form asp-action="CheckOutConfirmed"
+                          method="post">
+
+                        <input type="hidden"
+                               name="id"
+                               value="@Model.Id" />
+
+                        <div class="d-flex gap-2">
+
+                            <button type="submit"
+                                    class="btn btn-danger">
+                                Confirm Check-Out
+                            </button>
+
+                            <a asp-action="Index"
+                               class="btn btn-secondary">
+                                Cancel
+                            </a>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
